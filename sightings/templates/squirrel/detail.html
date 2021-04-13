@@ -1,0 +1,30 @@
+{% extends 'squirrel/base.html' %}
+{% block main %}
+    <div class="row">
+    <div class="col-12">
+        <br>
+        <h1>Sighting ID: {{ sighting.unique_squirrel_id }}</h1>
+        <br>
+        <span>{{ msg }}</span>
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            <table class="table">
+                <tr><th><label for="id_unique_squirrel_id">Unique squirrel id:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" name="unique_squirrel_id" maxlength="30" value="{{ sighting.unique_squirrel_id }}" required id="id_unique_squirrel_id"></td></tr>
+                <tr><th><label for="id_shift">Shift:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><select name="shift" required id="id_shift">
+                <option value="" {% if sighting.shift != 'AM' and sighting.shift != 'PM' %} selected {% endif %}selected>---------</option><option value="AM" {% if sighting.shift == 'AM' %} selected {% endif %}>AM</option><option value="PM" {% if sighting.shift == 'PM' %} selected {% endif %}>PM</option>
+                </select></td></tr>
+                <tr><th><label for="id_date">Date:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" value="{{ sighting.date|date:"Y-m-d"  }}" name="date" required id="id_date"></td></tr>
+                <tr><th><label for="id_latitude">Latitude:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="number" value="{{ sighting.latitude }}" name="latitude" step="any" required id="id_latitude"></td></tr>
+                <tr><th><label for="id_longitude">Longitude:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="number" value="{{ sighting.longitude }}"  name="longitude" step="any" required id="id_longitude"></td></tr>
+                <tr><th><label for="id_age">Age:</label></th><td><input type="text" name="age" maxlength="15" value="{{ sighting.age }}" id="id_age"></td></tr>
+            </table>
+
+
+            <input type="submit" value="Update" />
+
+        </form>
+        <br>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'squirrel/base.html' %}
+{% block main %}
+    <div class="row">
+    <div class="col-12 text-center">
+        <br>
+        <h1>{{ msg }}</h1>
+        <br>
+        {% for k,v in pct_dict.items %}
+            <span>{{ k }}: {{ v }}</span>
+            <br>
+        {% endfor %}
+        <br>
+    </div>
+</div>
+{% endblock %}
