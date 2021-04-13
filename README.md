@@ -11,3 +11,4 @@ Project group 47.
 UNIs: [zc2557,yg2780]
 
 # Link to the server
+https://www.djangoproject.com/download/#supported-versions
